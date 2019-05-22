@@ -1,0 +1,13 @@
+stm32f30x_gpio.c:121:6:GPIO_DeInit	16	static
+stm32f30x_gpio.c:184:6:GPIO_Init	32	static
+stm32f30x_gpio.c:243:6:GPIO_StructInit	16	static
+stm32f30x_gpio.c:264:6:GPIO_PinLockConfig	24	static
+stm32f30x_gpio.c:310:9:GPIO_ReadInputDataBit	24	static
+stm32f30x_gpio.c:334:10:GPIO_ReadInputData	16	static
+stm32f30x_gpio.c:351:9:GPIO_ReadOutputDataBit	24	static
+stm32f30x_gpio.c:375:10:GPIO_ReadOutputData	16	static
+stm32f30x_gpio.c:392:6:GPIO_SetBits	16	static
+stm32f30x_gpio.c:410:6:GPIO_ResetBits	16	static
+stm32f30x_gpio.c:432:6:GPIO_WriteBit	16	static
+stm32f30x_gpio.c:456:6:GPIO_Write	16	static
+stm32f30x_gpio.c:513:6:GPIO_PinAFConfig	24	static
