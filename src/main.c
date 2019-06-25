@@ -34,9 +34,9 @@ void flash2dac()
   while(1){
 	  if (FLASH_GetStatus() == FLASH_COMPLETE && FLASH_GetFlagStatus(FLASH_SR_BSY) == 0)
 	  {
-		  uint32_t tim = TIM_GetCounter(TIM2);
-		  if (tim == 49)
+		  if ((TIM2->SR & 0x2) == 0x2 )
 		  {
+			TIM2->SR &= (uint32_t) 0xfffd;
 			data_from_flash =(int8_t)( *(__IO uint16_t*)addr  + 0x80);
 			sample_8b =  data_from_flash  ;
 			DAC_SetChannel1Data(DAC1,DAC_Align_8b_R, sample_8b);
@@ -54,7 +54,7 @@ int main(void)
   GPIO_InitTypeDef 	gpio_init_tim;
   DAC_InitTypeDef 	dac_init;
 
-  // SystemInit();
+  *(uint32_t*) 0xE0042008 |= (uint32_t) 0x1;
 
   RCC_APB1PeriphClockCmd(RCC_APB1Periph_DAC, ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
