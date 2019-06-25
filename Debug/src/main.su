@@ -1,1 +1,2 @@
-main.c:7:5:main	32	static
+main.c:11:6:flash2dac	40	static
+main.c:52:5:main	32	static

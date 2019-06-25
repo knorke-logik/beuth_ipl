@@ -44,16 +44,26 @@ _Min_Stack_Size = 0x80; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 64K
+  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 40K
   RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 16K
   MEMORY_B1 (rx)  : ORIGIN = 0x60000000, LENGTH = 0K
   CCMRAM (rw)     : ORIGIN = 0x10000000, LENGTH = 8K
+  DATA (rwx)      : ORIGIN = 0x08009C40, LENGTH = 24k
 }
 
 /* Define output sections */
 SECTIONS
 {
+	/* Define output sections */
+	 .user_data : 
+  {
+    . = ALIGN(4);
+     KEEP(*(.user_data))
+    . = ALIGN(4);
+  } > DATA  
+  
   /* The startup code goes first into FLASH */
+  
   .isr_vector :
   {
     . = ALIGN(4);
@@ -62,6 +72,7 @@ SECTIONS
   } >FLASH
 
   /* The program code and other data goes into FLASH */
+  
   .text :
   {
     . = ALIGN(4);
@@ -100,6 +111,7 @@ SECTIONS
     KEEP (*(.preinit_array*))
     PROVIDE_HIDDEN (__preinit_array_end = .);
   } >FLASH
+  
   .init_array :
   {
     PROVIDE_HIDDEN (__init_array_start = .);
@@ -107,6 +119,7 @@ SECTIONS
     KEEP (*(.init_array*))
     PROVIDE_HIDDEN (__init_array_end = .);
   } >FLASH
+  
   .fini_array :
   {
     PROVIDE_HIDDEN (__fini_array_start = .);
