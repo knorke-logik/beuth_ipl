@@ -149,15 +149,6 @@ void configure_PC13(void) {
 
 //    /* Add IRQ vector to NVIC */
 //    /* PC13 is connected to EXTI_Line13, which has EXTI0_IRQn vector */
-//    NVIC_InitStruct.NVIC_IRQChannel = EXTI15_10_IRQn;
-//    /* Set priority */
-//    NVIC_InitStruct.NVIC_IRQChannelPreemptionPriority = 0x00;
-//    /* Set sub priority */
-//    NVIC_InitStruct.NVIC_IRQChannelSubPriority = 0x00;
-//    /* Enable interrupt */
-//    NVIC_InitStruct.NVIC_IRQChannelCmd = ENABLE;
-//    /* Add to NVIC */
-//    NVIC_Init(&NVIC_InitStruct);
     NVIC->ISER[1] |= 0x0100;
 }
 
