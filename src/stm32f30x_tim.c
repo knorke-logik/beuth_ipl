@@ -1231,6 +1231,10 @@ void TIM_OCStructInit(TIM_OCInitTypeDef* TIM_OCInitStruct)
   *            @arg TIM_OCMode_Asymmetric_PWM2            
   * @retval None
   */
+
+
+
+
 void TIM_SelectOCxM(TIM_TypeDef* TIMx, uint16_t TIM_Channel, uint32_t TIM_OCMode)
 {
   uint32_t tmp = 0;
@@ -1261,7 +1265,7 @@ void TIM_SelectOCxM(TIM_TypeDef* TIMx, uint16_t TIM_Channel, uint32_t TIM_OCMode
   }
   else
   {
-    tmp += (uint32_t)(TIM_Channel - (uint32_t)4)>> (uint32_t)1;
+    tmp += (uint32_t)(TIM_Channel - (uint32_t)4) >> (uint32_t)1;
 
     /* Reset the OCxM bits in the CCMRx register */
     *(__IO uint32_t *) tmp &= CCMR_OC24M_MASK;
@@ -1270,6 +1274,9 @@ void TIM_SelectOCxM(TIM_TypeDef* TIMx, uint16_t TIM_Channel, uint32_t TIM_OCMode
     *(__IO uint32_t *) tmp |= (uint32_t)(TIM_OCMode << 8);
   }
 }
+
+
+
 
 /**
   * @brief  Sets the TIMx Capture Compare1 Register value

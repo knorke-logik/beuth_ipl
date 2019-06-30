@@ -396,18 +396,18 @@ void DAC_WaveGenerationCmd(DAC_TypeDef* DACx, uint32_t DAC_Channel, uint32_t DAC
   */
 void DAC_SetChannel1Data(DAC_TypeDef* DACx, uint32_t DAC_Align, uint16_t Data)
 {  
-  __IO uint32_t tmp = 0;
+//  __IO uint32_t tmp = 0;
   
   /* Check the parameters */
-  assert_param(IS_DAC_ALL_PERIPH(DACx));
-  assert_param(IS_DAC_ALIGN(DAC_Align));
-  assert_param(IS_DAC_DATA(Data));
+//  assert_param(IS_DAC_ALL_PERIPH(DACx));
+//  assert_param(IS_DAC_ALIGN(DAC_Align));
+//  assert_param(IS_DAC_DATA(Data));
   
-  tmp = (uint32_t)DACx; 
-  tmp += DHR12R1_OFFSET + DAC_Align;
+//  tmp = (uint32_t)DACx + DHR12R1_OFFSET + DAC_Align;
+//  tmp += DHR12R1_OFFSET + DAC_Align;
 
   /* Set the DAC channel1 selected data holding register */
-  *(__IO uint32_t *) tmp = Data;
+  *(__IO uint32_t *) ((uint32_t)DACx + DHR12R1_OFFSET + DAC_Align) = Data;
 }
 
 /**
