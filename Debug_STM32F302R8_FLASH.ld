@@ -44,16 +44,25 @@ _Min_Stack_Size = 0x80; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 40K
+  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 36K
   RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 16K
   MEMORY_B1 (rx)  : ORIGIN = 0x60000000, LENGTH = 0K
   CCMRAM (rw)     : ORIGIN = 0x10000000, LENGTH = 8K
   DATA (rwx)      : ORIGIN = 0x08009C40, LENGTH = 24k
+  DATA2 (rwx)     : ORIGIN = 0x08008CA0, LENGTH = 4k
 }
 
 /* Define output sections */
 SECTIONS
 {
+	/* Define output sections */
+	 .user_data : 
+  {
+    . = ALIGN(4);
+     KEEP(*(.user_data))
+    . = ALIGN(4);
+  } > DATA2  
+  
 	/* Define output sections */
 	 .user_data : 
   {
